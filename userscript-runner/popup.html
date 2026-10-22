@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<style>
+  body { width: 420px; padding: 12px; font-family: sans-serif; font-size: 13px; }
+  textarea {
+    width: 100%; height: 200px; box-sizing: border-box;
+    font-family: monospace; font-size: 12px; margin-top: 8px;
+  }
+  .row { display: flex; gap: 8px; margin-top: 8px; align-items: center; }
+  input[type="text"] { flex: 1; padding: 4px; }
+  label.url { display: block; margin-top: 8px; }
+  input[name="match"] { width: 100%; padding: 4px; box-sizing: border-box; margin-top: 4px; }
+  button { padding: 6px 12px; }
+  #status { margin-left: auto; color: green; }
+  #file { margin-top: 8px; }
+  ul { padding-left: 18px; margin-top: 10px; }
+  li button { margin-left: 6px; padding: 2px 6px; }
+</style>
+</head>
+<body>
+  <b>Userscript Runner</b>
+
+  <label>スクリプト名 <input type="text" name="name" placeholder="my-script"></label>
+  <label class="url">URLマッチパターン（例: https://example.com/* 、空なら全ページ）
+    <input type="text" name="match" placeholder="https://example.com/*">
+  </label>
+  <input type="file" id="file" accept=".js,.user.js,.txt">
+
+  <textarea id="code" placeholder="// ここにuserscriptを貼り付け（または上でファイルを選択）&#10;// ==UserScript== ヘッダの @match は自動読み込みします"></textarea>
+
+  <div class="row">
+    <button id="save">保存</button>
+    <button id="run">現在のタブで実行</button>
+    <span id="status"></span>
+  </div>
+
+  <ul id="list"></ul>
+
+  <script src="popup.js"></script>
+</body>
+</html>
